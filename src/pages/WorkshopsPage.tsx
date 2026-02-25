@@ -87,7 +87,7 @@ export default function WorkshopsPage() {
 
       setCorsError(false);
     } catch (error) {
-      console.error("Fetch error:", error);
+    
       setCorsError(true);
     } finally {
       setLoading(false);
@@ -138,7 +138,6 @@ export default function WorkshopsPage() {
         alert(`تم تمديد الاشتراك لورشة ${extendModal.name} بنجاح`);
       } else {
         const errorData = await response.json();
-        console.error("Server Error:", errorData);
         alert("فشل التمديد: تأكد من الصلاحيات أو صحة البيانات");
       }
     } catch (error) {
@@ -185,12 +184,9 @@ export default function WorkshopsPage() {
           };
         });
 
-        console.log(
-          `تم التحديث بنجاح: الورشة الآن ${newState === 1 ? "نشطة" : "معلقة"}`,
-        );
+    
       }
     } catch (error) {
-      console.error("خطأ في الاتصال:", error);
     }
   };
 
@@ -202,10 +198,7 @@ export default function WorkshopsPage() {
         {corsError && (
           <div className="bg-destructive/10 border border-destructive/20 p-4 rounded-lg flex items-center gap-3 text-destructive">
             <AlertTriangle className="h-5 w-5" />
-            <p className="text-sm font-medium">
-              خطأ في الاتصال بالسيرفر (CORS). تأكدي من تفعيل الإضافة في المتصفح
-              أو اطلبي من مطور الـ Back-end تفعيل Localhost.
-            </p>
+            
           </div>
         )}
 
