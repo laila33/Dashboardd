@@ -15,26 +15,24 @@ const navItems = [
   { title: "إدارة الورش", icon: Wrench, path: "/workshops" },
   { title: "إضافة ورشة جديدة", icon: PlusCircle, path: "/add-workshop" },
 ];
-const [collapsed, setCollapsed] = useState(false);
-
-useEffect(() => {
-  const handleResize = () => {
-    if (window.innerWidth < 1024) {
-      setCollapsed(true);
-    } else {
-      setCollapsed(false);
-    }
-  };
-
-  handleResize();
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
 
 export function AppSidebar() {
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setCollapsed(true);
+      } else {
+        setCollapsed(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <aside
       className={cn(
@@ -78,11 +76,15 @@ export function AppSidebar() {
       </nav>
 
       {/* Collapse Toggle */}
-  <button
+      <button
         onClick={() => setCollapsed(!collapsed)}
         className="h-12 w-full flex items-center justify-center border-t border-border text-muted-foreground hover:text-foreground transition-colors"
       >
-        {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+        {collapsed ? (
+          <ChevronRight className="h-4 w-4" />
+        ) : (
+          <ChevronLeft className="h-4 w-4" />
+        )}
       </button>
     </aside>
   );
