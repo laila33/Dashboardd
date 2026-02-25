@@ -1,12 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Wrench, Award, ChevronLeft, ChevronRight } from "lucide-react";
+import { LayoutDashboard, Wrench, Award, ChevronLeft, ChevronRight, PlusCircle } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { title: "لوحة التحكم", icon: LayoutDashboard, path: "/" },
   { title: "إدارة الورش", icon: Wrench, path: "/workshops" },
-  { title: "الرتب", icon: Award, path: "/ranks" },
+  { title: "إضافة ورشة جديدة", icon: PlusCircle, path: "/add-workshop" },
 ];
 
 export function AppSidebar() {
