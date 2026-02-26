@@ -20,8 +20,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route element={<AdminLayout />}>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/workshops" element={<WorkshopsPage />} />
+            {/* <Route path="/" element={<DashboardPage />} /> */}
+            <Route path="/" element={<WorkshopsPage />} />
             <Route path="/workshops/add" element={<AddWorkshopPage />} />
             <Route path="/add-workshop" element={<AddWorkshopPage />} />{" "}
           </Route>

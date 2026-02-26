@@ -11,8 +11,8 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { title: "لوحة التحكم", icon: LayoutDashboard, path: "/" },
-  { title: "إدارة الورش", icon: Wrench, path: "/workshops" },
+  // { title: "لوحة التحكم", icon: LayoutDashboard, path: "/" },
+  { title: "إدارة الورش", icon: Wrench, path: "/" },
   { title: "إضافة ورشة جديدة", icon: PlusCircle, path: "/add-workshop" },
 ];
 
@@ -43,12 +43,13 @@ export function AppSidebar() {
       {/* Logo */}
       <div className="h-16 flex items-center justify-center border-b border-border px-4">
         {!collapsed && (
-          <h1 className="text-xl font-bold text-primary tracking-tight">
-            Quodra
-            <span className="text-muted-foreground font-normal text-sm mr-1">
-              {" "}
-            </span>
-          </h1>
+          <div className="mt-1 flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-gray-100 border-2 border-gray-200">
+            <img
+              src="/logo.jpeg"
+              alt="Logo"
+              className="w-full h-full object-cover"
+            />
+          </div>
         )}
         {collapsed && <span className="text-xl font-bold text-primary">Q</span>}
       </div>

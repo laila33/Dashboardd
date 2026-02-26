@@ -87,7 +87,6 @@ export default function WorkshopsPage() {
 
       setCorsError(false);
     } catch (error) {
-    
       setCorsError(true);
     } finally {
       setLoading(false);
@@ -135,7 +134,7 @@ export default function WorkshopsPage() {
         setExtendModal(null);
         setNewDate("");
 
-        alert(`تم تمديد الاشتراك لورشة ${extendModal.name} بنجاح`);
+        // alert(`تم تمديد الاشتراك لورشة ${extendModal.name} بنجاح`);
       } else {
         const errorData = await response.json();
         alert("فشل التمديد: تأكد من الصلاحيات أو صحة البيانات");
@@ -183,11 +182,8 @@ export default function WorkshopsPage() {
               : prev.totalInactiveWorkshops + 1,
           };
         });
-
-    
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   return (
@@ -198,7 +194,6 @@ export default function WorkshopsPage() {
         {corsError && (
           <div className="bg-destructive/10 border border-destructive/20 p-4 rounded-lg flex items-center gap-3 text-destructive">
             <AlertTriangle className="h-5 w-5" />
-            
           </div>
         )}
 
@@ -239,12 +234,12 @@ export default function WorkshopsPage() {
             />
           </div>
 
-          <Button
+          {/* <Button
             onClick={() => navigate("/workshops/add")}
             className="gap-2 w-full md:w-auto justify-center"
           >
             <Plus className="h-4 w-4" /> إضافة ورشة جديدة
-          </Button>
+          </Button> */}
         </div>
 
         <div className="bg-card rounded-xl border border-border overflow-hidden">
@@ -434,25 +429,35 @@ export default function WorkshopsPage() {
       </div>
 
       <Dialog open={!!extendModal} onOpenChange={() => setExtendModal(null)}>
-        <DialogContent dir="rtl">
+        <DialogContent
+          dir="rtl"
+          className="text-right [&>button]:right-auto [&>button]:left-4"
+        >
           <DialogHeader>
-            <DialogTitle>تمديد اشتراك {extendModal?.name}</DialogTitle>
+            <DialogTitle className="text-right">
+              تمديد اشتراك {extendModal?.name}
+            </DialogTitle>
           </DialogHeader>
+
           <div className="py-4">
-            <label className="text-sm mb-2 block">عدد أشهر التمديد</label>
+            <label className="text-sm mb-2 block text-right font-medium">
+              عدد أشهر التمديد
+            </label>
             <Input
               type="number"
               min="1"
-              placeholder="أدخل عدد الشهور )"
+              placeholder="أدخل عدد الشهور"
               value={newDate}
+              className="text-right"
               onChange={(e) => setNewDate(e.target.value)}
             />
           </div>
-          <DialogFooter className="gap-2">
+
+          <DialogFooter className="flex flex-row-reverse sm:justify-start gap-2">
+            <Button onClick={handleExtendSubscription}>حفظ</Button>
             <Button variant="outline" onClick={() => setExtendModal(null)}>
               إلغاء
             </Button>
-            <Button onClick={handleExtendSubscription}>حفظ</Button>{" "}
           </DialogFooter>
         </DialogContent>
       </Dialog>
