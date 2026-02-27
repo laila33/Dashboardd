@@ -133,7 +133,7 @@ export default function WorkshopsPage() {
 
         setExtendModal(null);
         setNewDate("");
-
+ 
         // alert(`تم تمديد الاشتراك لورشة ${extendModal.name} بنجاح`);
       } else {
         const errorData = await response.json();
@@ -199,7 +199,7 @@ export default function WorkshopsPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-4  gap-4">
           <StatCard
-            title="إجمالي المستخدمين"
+            title="إجمالي المستخدمينن"
             value={loading ? "..." : overview.totalUsers}
             icon={<Users className="h-5 w-5" />}
             variant="default"
@@ -336,6 +336,7 @@ export default function WorkshopsPage() {
                     <tr className="border-b bg-muted/50">
                       <th className="py-3 px-4">اسم الورشة</th>
                       <th className="py-3 px-4">رقم الهاتف</th>
+                      
                       <th className="py-3 px-4 text-center">عدد العملاء</th>
                       <th className="py-3 px-4">تاريخ البداية</th>
                       <th className="py-3 px-4">تاريخ الانتهاء</th>
